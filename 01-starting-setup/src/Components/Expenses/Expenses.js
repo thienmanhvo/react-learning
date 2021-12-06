@@ -6,14 +6,17 @@ import ExpenseList from "./ExpenseList";
 import ExpenseChart from "./ExpenseChart";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredYear, setFilteredYear] = useState("All");
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
-  const filteredExpense = props.expenses.filter(
-    (element) => element.date.getFullYear().toString() === filteredYear
-  );
+  const filteredExpense =
+    filteredYear === "All"
+      ? props.expenses
+      : props.expenses.filter(
+          (element) => element.date.getFullYear().toString() === filteredYear
+        );
   return (
     <Card className="expenses">
       <ExpensesFilter
