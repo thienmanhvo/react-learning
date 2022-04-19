@@ -2,13 +2,13 @@ import { useReducer } from "react";
 import CartContext from "./cart-context";
 
 const defaultCartState = {
-  item: [],
+  items: [],
   totalAmount: 0
 };
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updeatedItem = [...state.item];
-    const index = state.item.findIndex((item) => item.id === action.item.id);
+    const updeatedItem = [...state.items];
+    const index = state.items.findIndex((item) => item.id === action.item.id);
     if (index === -1) {
       updeatedItem.push(action.item);
     } else {
@@ -52,7 +52,7 @@ const CartProvider = (props) => {
   };
 
   const cartContext = {
-    item: cartState.item,
+    items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler

@@ -13,8 +13,8 @@ const HeaderCartButton = (props) => {
       </span>
       <span>Your Cart</span>
       <span className={classes.badge}>
-        {cartCtx.item.reduce((total, current) => {
-          return total + current;
+        {cartCtx.items.reduce((total, current) => {
+          return total + current.amount;
         }, 0)}
       </span>
     </button>
